@@ -34,6 +34,7 @@ public Arista Search(String element){
     Arista aux = primero.getNext();
     for (int i = 0; i < size; i++) {
         if (!aux.getCity().equals(element)){
+//            System.out.println(element + "--" + aux.getCity());
             aux = aux.getNext();
         } else {
             return aux;

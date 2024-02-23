@@ -30,6 +30,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         Exit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -60,6 +61,28 @@ public class InicioInterfaz extends javax.swing.JFrame {
         DeleteArista = new javax.swing.JButton();
         DeleteVertice = new javax.swing.JButton();
         DeleteCity1 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        InputFirst = new javax.swing.JTextField();
+        InputLast = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        NewAlfa = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        NewBeta = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Cicles = new javax.swing.JTextArea();
+        jLabel20 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ShowShorter = new javax.swing.JTextArea();
+        jLabel21 = new javax.swing.JLabel();
+        NewAnts = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        NewRo = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        Moves = new javax.swing.JTextField();
+        ShowCicles = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -74,6 +97,13 @@ public class InicioInterfaz extends javax.swing.JFrame {
 
         jButton1.setText("jButton1");
 
+        jTextField1.setText("jTextField1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -85,7 +115,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
                 ExitActionPerformed(evt);
             }
         });
-        jPanel2.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, -1, -1));
+        jPanel2.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, -1, -1));
 
         jLabel1.setText("Ingre el valor que desea:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 160, -1));
@@ -175,7 +205,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
         ShowGrafo.setRows(5);
         jScrollPane1.setViewportView(ShowGrafo);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 340, 200));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 280, 120));
 
         jButton2.setText("Insertar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +221,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
                 ShowActionPerformed(evt);
             }
         });
-        jPanel2.add(Show, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, 70, 20));
+        jPanel2.add(Show, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 70, 20));
 
         InsertArista.setText("Insertar");
         InsertArista.addActionListener(new java.awt.event.ActionListener() {
@@ -218,7 +248,106 @@ public class InicioInterfaz extends javax.swing.JFrame {
         jPanel2.add(DeleteVertice, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 70, 20));
         jPanel2.add(DeleteCity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 280, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 570));
+        jLabel15.setText("Ver Ciclos:");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 80, 20));
+
+        jLabel16.setText("Ingrese el punto de partida:");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 160, -1));
+
+        jLabel17.setText("Ingrese la ciudad de llegada: ");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, -1, -1));
+
+        InputFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputFirstActionPerformed(evt);
+            }
+        });
+        jPanel2.add(InputFirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, 160, -1));
+
+        InputLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputLastActionPerformed(evt);
+            }
+        });
+        jPanel2.add(InputLast, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 530, 160, -1));
+
+        jLabel18.setText("Ingrese alfa:");
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 70, -1));
+
+        NewAlfa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewAlfaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(NewAlfa, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 580, 240, -1));
+
+        jLabel19.setText("Ingrese Beta: ");
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, -1, -1));
+
+        NewBeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewBetaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(NewBeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 630, 240, -1));
+
+        Cicles.setColumns(20);
+        Cicles.setRows(5);
+        jScrollPane2.setViewportView(Cicles);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 690, 270, -1));
+
+        jLabel20.setText("Recorrido mas rapido:");
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 650, 130, -1));
+
+        ShowShorter.setColumns(20);
+        ShowShorter.setRows(5);
+        jScrollPane3.setViewportView(ShowShorter);
+
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 680, 230, 90));
+
+        jLabel21.setText("Contidad de Hormigas: ");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, -1, -1));
+
+        NewAnts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewAntsActionPerformed(evt);
+            }
+        });
+        jPanel2.add(NewAnts, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 470, 230, -1));
+
+        jLabel22.setText("Ingrese Ro(p):");
+        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 520, 80, -1));
+
+        NewRo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewRoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(NewRo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 520, 200, -1));
+
+        jLabel23.setText("Pasadas: ");
+        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 560, -1, -1));
+
+        Moves.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MovesActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Moves, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 560, 200, -1));
+
+        ShowCicles.setText("Iniciar Simulacion: ");
+        ShowCicles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowCiclesActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ShowCicles, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 720, -1, -1));
+
+        jLabel24.setText("Orden de Pasadas:");
+        jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 670, 110, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -283,6 +412,68 @@ public class InicioInterfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_InputDeleteActionPerformed
 
+    private void InputFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputFirstActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_InputFirstActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void NewBetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewBetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NewBetaActionPerformed
+
+    private void NewAntsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewAntsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NewAntsActionPerformed
+
+    private void NewRoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewRoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NewRoActionPerformed
+
+    private void InputLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputLastActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputLastActionPerformed
+
+    private void NewAlfaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewAlfaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NewAlfaActionPerformed
+
+    private void ShowCiclesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowCiclesActionPerformed
+        // TODO add your handling code here:
+        String i = this.InputFirst.getText();
+        String j = this.InputLast.getText();
+        double alpha = Double.parseDouble(this.NewAlfa.getText());
+        double beta = Double.parseDouble(this.NewBeta.getText());
+        double p = Double.parseDouble(this.NewRo.getText());
+        int ant = Integer.parseInt(this.NewAnts.getText());
+        int cicle = Integer.parseInt(this.Moves.getText());
+        String view = "";
+        Ants minor = null;
+        for (int k = 0; k < cicle; k++) {
+            for (int l = 0; l < ant; l++) {
+                Ants a = new Ants();
+                newgrafo.profundidad((int)alpha, (int)beta, a);
+                view += "Recorrido: "+a.getVisited() +","+"Distancia: "+ a.getDistance() + "\n";
+                if (minor == null){
+                  minor = a;  
+                }else{
+                    if(minor.getDistance() > a.getDistance()){
+                        minor = a;
+                    }
+                }
+            }
+        }
+        this.Cicles.setText(view);
+        this.ShowShorter.setText("La menor distancia es: " + minor.getVisited() + "," +"con una distancia de: " + minor.getDistance());
+    }//GEN-LAST:event_ShowCiclesActionPerformed
+
+    private void MovesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MovesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MovesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -319,6 +510,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea Cicles;
     private javax.swing.JButton DeleteArista;
     private javax.swing.JTextField DeleteCity1;
     private javax.swing.JTextField DeleteCity2;
@@ -327,11 +519,20 @@ public class InicioInterfaz extends javax.swing.JFrame {
     private javax.swing.JButton Exit;
     private javax.swing.JTextField InputArista;
     private javax.swing.JTextField InputDelete;
+    private javax.swing.JTextField InputFirst;
+    private javax.swing.JTextField InputLast;
     private javax.swing.JButton InsertArista;
     private javax.swing.JTextField InsertarCity1;
     private javax.swing.JTextField InsertarCity2;
+    private javax.swing.JTextField Moves;
+    private javax.swing.JTextField NewAlfa;
+    private javax.swing.JTextField NewAnts;
+    private javax.swing.JTextField NewBeta;
+    private javax.swing.JTextField NewRo;
     private javax.swing.JButton Show;
+    private javax.swing.JButton ShowCicles;
     private javax.swing.JTextArea ShowGrafo;
+    private javax.swing.JTextArea ShowShorter;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -340,7 +541,17 @@ public class InicioInterfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -351,5 +562,8 @@ public class InicioInterfaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

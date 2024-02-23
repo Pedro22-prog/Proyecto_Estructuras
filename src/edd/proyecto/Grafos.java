@@ -3,7 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package edd.proyecto;
-
+/***Descripcion: En este archivo se encuentra la clase de los grafos y los métodos que se encargan de revisar si la hormiga visito la ciudad, las formulas y las probabilidades de la ciudad que visite
+ * @author: Pedro González
+ * @version: 22/02/24
+ * Esto es un comentario para javadoc
+ */
 import java.util.Random;
 
 /**
@@ -14,15 +18,17 @@ import java.util.Random;
 public class Grafos {
 
     private int grafosize;
-    private Nodo first;
+    private int first;
+    private int last;
     private int save;
     private Lista[] vertices;
 
     public Grafos(int grafosize) {
         this.grafosize = grafosize;
-        this.first = null;
+        this.first = 0;
         this.save = 0;
         this.vertices = new Lista[this.grafosize];
+        this.last = 0;
         for (int i = 0; i < this.grafosize; i++) {
             this.vertices[i] = new Lista();
         }
@@ -143,6 +149,7 @@ public class Grafos {
         }
         return p;
     }
+    
 
     public boolean ExisteArista(int v, int i){
         boolean a = false;
@@ -153,54 +160,87 @@ public class Grafos {
         }
         return a;
     }
-    
-    public void Probabilidades(int r, boolean[] s){
-        int count = 0;
-        int p = 0;
-        int n = 0;
-        for (int i = 0; i < grafosize; i++) {
-            if (i != r && s[i] != false && vertices[r].Search(vertices[i].primero.getElement()) != null){
-                count += 1;
-            }
-        }
-        for (int i = 0; i < grafosize; i++) {
-            if (i != r && s[i] != false && vertices[r].Search(vertices[i].primero.getElement()) != null){
-               int d = vertices[r].Search(vertices[i].primero.getElement()).getDistance();
-               p += 1/(count) * 1/d;
-        }
-        Random l = new Random();
-        double random = l.nextDouble();
-        for (int j = 0; j < grafosize; j++) {
-            if(i != r && s[i] != false && vertices[r].Search(vertices[i].primero.getElement()) != null){
-                int d = vertices[r].Search(vertices[i].primero.getElement()).getDistance();
-                n += (1/count * 1/d)/p;
-            }
-            if(n>random){
-                recorrerProfundidad(i, s);
-            } 
-        }
+    public void setFirst(int first){
+        this.first = first;
     }
+    public void setLast(int last){
+        this.last = last;
     }
     
-    public void recorrerProfundidad(int v, boolean[] visitados) {
-//se marca el vértice v como visitado
-        visitados[v] = true;
-//el tratamiento del vértice consiste únicamente en imprimirlo en pantalla
-        System.out.println(v);
-//se examinan los vértices adyacentes a v para continuar el recorrido
-        for (int i = 0; i < this.grafosize; i++) {
-            if ((v != i) && (!visitados[i]) && (this.ExisteArista(v, i))) {
-                
+    public void ChangeFirst(String element){
+        for (int i = 0; i < grafosize; i++) {
+            if (vertices[i].primero.getElement().equals(element)){
+                this.first = i;
+                break;
             }
+        }
+    }
+    
+    public void ChangeLast(String element){
+        for (int i = 0; i < grafosize; i++) {
+            if (vertices[i].primero.getElement().equals(element)){
+                this.last = i;
+                break;
+            }
+        }
+    }
+    public void Probabilidades(int r, boolean[] s, double alpha, double beta, Ants a){
+        double p = 0;
+        double n = 0;
+        s[r] = true;
+        a.setVisited(a.getVisited()+this.vertices[r].primero.getElement() + ",");
+        if(r != last){
             
-            if(true){
-                recorrerProfundidad(i, visitados);
-                
-        }
-    }}
+    //        for (int i = 0; i < grafosize; i++) {
+    //            if (i != r && s[i] != false && vertices[r].Search(vertices[i].primero.getElement()) != null){
+    //                count += 1;
+    //            }
+    //        }
+            for (int i = 0; i < grafosize; i++) {
+                if (i != r && s[i] != true && vertices[i].primero != null && vertices[r].Search(vertices[i].primero.getElement()) != null){
+                   double d = vertices[r].Search(vertices[i].primero.getElement()).getDistance();
+//                    System.out.println(d);
+//                    System.out.println((vertices[r].Search(vertices[i].primero.getElement()).getFeromona()));
+                   p += Math.pow((vertices[r].Search(vertices[i].primero.getElement()).getFeromona()), alpha) * Math.pow(1/d, beta);
+            }}
+//                System.out.println(p);
+            Random l = new Random();
+            double random = l.nextDouble();
+            for (int i = 0; i < grafosize; i++) {
+                if(i != r && s[i] != true && vertices[i].primero != null&& vertices[r].Search(vertices[i].primero.getElement()) != null){
+                    double d = vertices[r].Search(vertices[i].primero.getElement()).getDistance();
+                    n += (Math.pow((vertices[r].Search(vertices[i].primero.getElement()).getFeromona()), alpha) * Math.pow(1/d, beta))/p;
+                    System.out.println(n);
+                }
+                if(n>random && vertices[i].primero != null){
+                    a.setDistance(a.getDistance()+  vertices[r].Search(vertices[i].primero.getElement()).getDistance());
+                    Probabilidades(i, s, alpha, beta, a);
+                    break;
+                } 
+            }
+    }
+    }
+//    
+//    public void recorrerProfundidad(int v, boolean[] visitados) {
+////se marca el vértice v como visitado
+//        visitados[v] = true;
+////el tratamiento del vértice consiste únicamente en imprimirlo en pantalla
+//        System.out.println(v);
+////se examinan los vértices adyacentes a v para continuar el recorrido
+//        for (int i = 0; i < this.grafosize; i++) {
+//            if ((v != i) && (!visitados[i]) && (this.ExisteArista(v, i))) {
+//                
+//            }
+//            
+//            if(true){
+//                recorrerProfundidad(i, visitados);
+//                
+//        }
+//    }
+//    }
 //procedimiento no recursivo
 
-    public void profundidad() {
+    public void profundidad(double alpha, double beta, Ants a) {
         boolean visitados[] = new boolean[this.grafosize];
         
 
@@ -209,8 +249,80 @@ public class Grafos {
             visitados[i] = false;
         }
         
-        recorrerProfundidad( 0, visitados);
-            
+        Probabilidades( first, visitados, alpha, beta, a);
+        this.CalcularAcumulado(a);
+        }
+    
+    public void NewFeromona(String element){
+        for (int i = 0; i < grafosize; i++) {
+            if (vertices[i].primero != null){
+                Arista aux = vertices[i].primero.getNext();
+                while (aux != null){
+                    aux.setFeromona(1/this.save);
+                    aux.getNext();
+                }
+            }
         }
     }
+    public Arista searchArista(String element1, String element2){
+        for (int i = 0; i < grafosize; i++) {
+            if(vertices[i].primero != null){
+//                System.out.println( vertices[i].primero.getElement() + "    " +element1);
+            }
+            
+            if (vertices[i].primero != null && vertices[i].primero.getElement().equals(element1)){
+                Arista aux = vertices[i].primero.getNext();
+                while (aux != null && !aux.getCity().equals(element2)){
+//                    System.out.println(aux.getCity() + "   " + element2);
+                    aux = aux.getNext();
+                }
+                return aux;
+            }
+        }
+        return null;
+    }
+    
+    
+    public void CalcularAcumulado(Ants a){
+        String[] visited_cities = a.getVisited().split(",");
+//        System.out.println(visited_cities[visited_cities.length-1]);
+        for (int i = 0; i < visited_cities.length; i++) {
+            if(i+1 < visited_cities.length){
+                   
+                this.searchArista(visited_cities[i], visited_cities[i+1]).sumatoria += 1/a.getDistance();
+                this.searchArista(visited_cities[i+1], visited_cities[i]).sumatoria += 1/a.getDistance();
+            }
+        }
+    }
+    
+    public void ActFeromonas(double p){
+        for (int i = 0; i < grafosize; i++) {
+            if (vertices[i].primero != null){
+                Arista aux = vertices[i].primero.getNext();
+                while (aux != null){
+//                    System.out.println("---------------------------------- SUMATORIA --- " + aux.sumatoria);
+                    aux.setFeromona(aux.getFeromona() * (1-p) + aux.sumatoria);
+                    System.out.println("FEROMONAS "+aux.getFeromona());
+                    aux = aux.getNext();
+                }
+                
+            }
+        }
+        
+    }
+    
+  /*  public void MinPath(){
+        Arista min = null;
+        for (int i = 0; i < grafosize; i++) {
+            Arista aux = vertices[i].primero.getNext();
+            if (min == null && vertices[i].primero != null){
+                min = aux;
+            }
+            else if (min.getDistance() != 0 && aux.getDistance() < min.getDistance()){
+                min = aux;
+            }
+        }
+    El metodo buscaba el menor por hormiga, pero no se necesita ya que se creo uno en el JFrameS
+    }*/
+}
 

@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package edd.proyecto;
+/***Descripcion: Clase arista que se encarga de ver las ciudades que la hormagia puede visitar, con las feromonas y las distancias respectivas, y con sus setters y getters respectivos.
+ * @author: Pedro González
+ * @version: 22/02/24
+ * Esto es un comentario para javadoc
+ */
 
 /**
  *
@@ -10,14 +15,16 @@ package edd.proyecto;
  */
 public class Arista {
     private String city;
-    private int distance;
-    private int feromona;
+    private double distance;
+    private double feromona;
     private Arista next;
+    public double sumatoria;    
     public Arista(String city){
         this.distance = 0;
-        this.feromona = 0;
+        this.feromona = 11;
         this.next = null;
         this.city = city;
+        this.sumatoria = 0;
     }
 
     /**
@@ -37,28 +44,28 @@ public class Arista {
     /**
      * @return the distance
      */
-    public int getDistance() {
+    public double getDistance() {
         return distance;
     }
 
     /**
      * @param distance the distance to set
      */
-    public void setDistance(int distance) {
+    public void setDistance(double distance) {
         this.distance = distance;
     }
 
     /**
      * @return the feromona
      */
-    public int getFeromona() {
+    public double getFeromona() {
         return feromona;
     }
 
     /**
      * @param feromona the feromona to set
      */
-    public void setFeromona(int feromona) {
+    public void setFeromona(double feromona) {
         this.feromona = feromona;
     }
 

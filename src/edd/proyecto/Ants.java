@@ -9,7 +9,40 @@ package edd.proyecto;
 }*/
 
 public class Ants{
-    private String First = null;
-    private String Last = null;
-    private String Visited = null;
+    private double distance;
+    private String visited;
+    
+    public Ants(){
+        this.distance = 0;
+        this.visited = "";
+    }
+
+    /**
+     * @return the distance
+     */
+    public double getDistance() {
+        return distance;
+    }
+
+    /**
+     * @param distance the distance to set
+     */
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    /**
+     * @return the visited
+     */
+    public String getVisited() {
+        return visited;
+    }
+
+    /**
+     * @param visited the visited to set
+     */
+    public void setVisited(String visited) {
+        this.visited = visited;
+    }
+    
 }  
