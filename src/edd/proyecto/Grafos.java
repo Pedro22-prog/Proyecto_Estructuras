@@ -45,6 +45,7 @@ public class Grafos {
                 }
 
             }
+            save+=1;
         } else {
             Lista[] NewVertices = new Lista[grafosize + 20];
             for (int i = 0; i < grafosize; i++) {
@@ -60,7 +61,7 @@ public class Grafos {
         }
     }
 
-    public void InsertArista(int element, String City1, String City2) {
+    public void InsertArista(double element, String City1, String City2) {
         Boolean aux = false;
         Boolean abc = false;
         for (int i = 0; i < grafosize; i++) {
@@ -112,6 +113,7 @@ public class Grafos {
         for (int i = 0; i < grafosize; i++) {
             if (vertices[i].primero != null && vertices[i].primero.getElement().equals(element)) {
                 vertices[i] = new Lista();
+                save--;
                 b = true;
             } else {
                 if (vertices[i].primero != null) {
@@ -201,9 +203,13 @@ public class Grafos {
                    double d = vertices[r].Search(vertices[i].primero.getElement()).getDistance();
 //                    System.out.println(d);
 //                    System.out.println((vertices[r].Search(vertices[i].primero.getElement()).getFeromona()));
+System.out.println("****************************************");
+System.out.println(vertices[r].Search(vertices[i].primero.getElement()).getFeromona());
+                    System.out.println(1/d);
+                    System.out.println("********************************");
                    p += Math.pow((vertices[r].Search(vertices[i].primero.getElement()).getFeromona()), alpha) * Math.pow(1/d, beta);
             }}
-//                System.out.println(p);
+                System.out.println(p);
             Random l = new Random();
             double random = l.nextDouble();
             for (int i = 0; i < grafosize; i++) {
@@ -253,13 +259,13 @@ public class Grafos {
         this.CalcularAcumulado(a);
         }
     
-    public void NewFeromona(String element){
+    public void NewFeromona(){
         for (int i = 0; i < grafosize; i++) {
             if (vertices[i].primero != null){
                 Arista aux = vertices[i].primero.getNext();
                 while (aux != null){
-                    aux.setFeromona(1/this.save);
-                    aux.getNext();
+                    aux.setFeromona(1/(double)this.save);
+                    aux = aux.getNext();
                 }
             }
         }
@@ -309,6 +315,20 @@ public class Grafos {
             }
         }
         
+    }
+    
+    public void verferomonas(){
+         for (int i = 0; i < grafosize; i++) {
+            if (vertices[i].primero != null){
+                Arista aux = vertices[i].primero.getNext();
+                while (aux != null){
+                    System.out.println("---------------------------------- feromonas --- " + aux.getFeromona());
+                    
+                    aux = aux.getNext();
+                }
+                
+            }
+        }
     }
     
   /*  public void MinPath(){

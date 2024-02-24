@@ -14,8 +14,34 @@ public class InicioInterfaz extends javax.swing.JFrame {
      * Creates new form InicioInterfaz
      */
     public InicioInterfaz() {
-        initComponents();
-        this.newgrafo = new Grafos(7);
+        
+        this.newgrafo = new Grafos( 25);
+//        newgrafo.Insert("5");
+//        newgrafo.Insert("4");
+//        newgrafo.Insert("3");
+//        newgrafo.Insert("2");
+//        newgrafo.Insert("1");
+//        newgrafo.InsertArista(23, "1", "3");
+//        newgrafo.InsertArista(25, "1", "2");
+//        //newgrafo.InsertArista(33, "1", "4");
+//     //   newgrafo.InsertArista(101, "1", "5");
+//        newgrafo.InsertArista(13, "2", "3");
+//      //  newgrafo.InsertArista(19, "2", "4");
+//        newgrafo.InsertArista(29, "2", "5");
+//        newgrafo.InsertArista(26, "3", "5");
+//        newgrafo.InsertArista(73, "4", "5");
+//        System.out.println(newgrafo.Imprimir());
+//        newgrafo.ChangeLast("1");
+//        for (int i = 0; i < 20; i++) {
+//            for (int j = 0; j < 10; j++) {
+//                Ants a = new Ants();
+//                newgrafo.profundidad(1, 1, a);
+//                System.out.println(a.getVisited());
+//                System.out.println(a.getDistance());
+//                
+//            }
+//            newgrafo.ActFeromonas(0.5);
+            initComponents();
     
     }
 
@@ -387,7 +413,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         String City1 = this.InsertarCity1.getText();
         String City2 = this.InsertarCity2.getText();
-        int d = Integer.parseInt(this.Distance.getText());
+        double d = Double.parseDouble(this.Distance.getText());
         newgrafo.InsertArista(d, City1, City2);
     }//GEN-LAST:event_InsertAristaActionPerformed
 
@@ -452,10 +478,14 @@ public class InicioInterfaz extends javax.swing.JFrame {
         int cicle = Integer.parseInt(this.Moves.getText());
         String view = "";
         Ants minor = null;
+        newgrafo.ChangeLast((this.InputLast.getText()));
+        newgrafo.NewFeromona();
+        newgrafo.verferomonas();
+        System.out.println(newgrafo.Imprimir());
         for (int k = 0; k < cicle; k++) {
             for (int l = 0; l < ant; l++) {
                 Ants a = new Ants();
-                newgrafo.profundidad((int)alpha, (int)beta, a);
+                this.newgrafo.profundidad(alpha, beta, a);
                 view += "Recorrido: "+a.getVisited() +","+"Distancia: "+ a.getDistance() + "\n";
                 if (minor == null){
                   minor = a;  
