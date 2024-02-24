@@ -8,14 +8,19 @@ package edd.proyecto;
  *
  * @author pedro
  */
+
 public class InicioInterfaz extends javax.swing.JFrame {
     Grafos newgrafo;
+    
     /**
      * Creates new form InicioInterfaz
      */
+    
     public InicioInterfaz() {
         initComponents();
         this.newgrafo = new Grafos(7);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     
     }
 
@@ -85,7 +90,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
                 ExitActionPerformed(evt);
             }
         });
-        jPanel2.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, -1, -1));
+        jPanel2.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1033, 10, 50, 40));
 
         jLabel1.setText("Ingre el valor que desea:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 160, -1));
@@ -218,7 +223,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
         jPanel2.add(DeleteVertice, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 70, 20));
         jPanel2.add(DeleteCity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 280, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 570));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -8,11 +8,23 @@ package edd.proyecto;
  *
  * @author pedro
  */
+
+
+ /** @author VirginiaT
+ */
+
+/** Clase Arista
+ * Cuyos Atributos son: City, Distance y Feromona
+ */
+ 
+
 public class Arista {
     private String city;
     private int distance;
     private int feromona;
     private Arista next;
+    
+    
     public Arista(String city){
         this.distance = 0;
         this.feromona = 0;

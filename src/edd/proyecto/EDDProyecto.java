@@ -11,6 +11,8 @@ package edd.proyecto;
 
 public class EDDProyecto {
 
+    // Poder visualizar la Interfaz
+    
     public static void main(String[] args) {
         InicioInterfaz i = new InicioInterfaz();
         i.setVisible(true);
