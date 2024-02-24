@@ -480,7 +480,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
         Ants minor = null;
         newgrafo.ChangeLast((this.InputLast.getText()));
         newgrafo.NewFeromona();
-        newgrafo.verferomonas();
+        //newgrafo.verferomonas();
         System.out.println(newgrafo.Imprimir());
         for (int k = 0; k < cicle; k++) {
             for (int l = 0; l < ant; l++) {

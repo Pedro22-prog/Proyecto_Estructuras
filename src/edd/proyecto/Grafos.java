@@ -317,18 +317,18 @@ System.out.println(vertices[r].Search(vertices[i].primero.getElement()).getFerom
         
     }
     
-    public void verferomonas(){
-         for (int i = 0; i < grafosize; i++) {
-            if (vertices[i].primero != null){
-                Arista aux = vertices[i].primero.getNext();
-                while (aux != null){
-                    System.out.println("---------------------------------- feromonas --- " + aux.getFeromona());
-                    
-                    aux = aux.getNext();
-                }
-                
-            }
-        }
+//    public void verferomonas(){
+//         for (int i = 0; i < grafosize; i++) {
+//            if (vertices[i].primero != null){
+//                Arista aux = vertices[i].primero.getNext();
+//                while (aux != null){
+//                    System.out.println("---------------------------------- feromonas --- " + aux.getFeromona());
+//                    
+//                    aux = aux.getNext();
+//                }
+//                
+//            }
+//        }
     }
     
   /*  public void MinPath(){
@@ -343,6 +343,6 @@ System.out.println(vertices[r].Search(vertices[i].primero.getElement()).getFerom
             }
         }
     El metodo buscaba el menor por hormiga, pero no se necesita ya que se creo uno en el JFrameS
-    }*/
-}
+    }
+}*/
 
