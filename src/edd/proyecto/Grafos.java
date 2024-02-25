@@ -11,13 +11,30 @@ import java.util.Random;
  *
  * @author pedro
  */
+
+// Clase Grafo
+
 public class Grafos {
+    
+    /**
+     * Atributos de la Clase Grafos
+     * 
+     * grafosize: Tamaño del Grafo
+     * first: 
+     * save: 
+     * vertices: 
+     */
 
     private int grafosize;
     private Nodo first;
     private int save;
     private Lista[] vertices;
 
+    /**
+     * Constructor de Grafos
+     * @param grafosize del Grafo
+     */
+    
     public Grafos(int grafosize) {
         this.grafosize = grafosize;
         this.first = null;
@@ -28,6 +45,11 @@ public class Grafos {
         }
 
     }
+    
+    /**
+     * Método para Insertar un Grafos
+     * @param element del Grafo
+     */
 
     public void Insert(String element) {
         Nodo newnodo = new Nodo(element);
@@ -44,6 +66,7 @@ public class Grafos {
             for (int i = 0; i < grafosize; i++) {
                 NewVertices[i] = new Lista();
             }
+            
             for (int i = 0; i < grafosize; i++) {
                 NewVertices[i] = vertices[i];
             }
@@ -54,6 +77,13 @@ public class Grafos {
         }
     }
 
+    /**
+     * Método para Insertar una Arista
+     * @param element
+     * @param City1 
+     * @param City2
+     */
+    
     public void InsertArista(int element, String City1, String City2) {
         Boolean aux = false;
         Boolean abc = false;
@@ -84,6 +114,12 @@ public class Grafos {
             System.out.println("No se puede crear el camino para que pase la hormiga por esas ciudades");
         }
     }
+    
+    /**
+     * Método para Eliminar una Arista
+     * @param C1 Primera Ciudad
+     * @param C2 Segunda Ciudad
+     */
 
     public void DeleteArista(String C1, String C2) {
         boolean a = false;
@@ -101,6 +137,11 @@ public class Grafos {
         }
     }
 
+    /**
+     * Método para Eliminar un Vértice
+     * @param element
+     */
+    
     public void DeleteVertice(String element) {
         boolean b = false;
         for (int i = 0; i < grafosize; i++) {
@@ -127,6 +168,8 @@ public class Grafos {
         }
     }
 
+    // Método para Imprimir 
+    
     public String Imprimir() {
         String p = "";
         for (int i = 0; i < grafosize; i++) {
@@ -144,6 +187,13 @@ public class Grafos {
         return p;
     }
 
+    /**
+     * Método para conocer si Existe una Arista
+     * @return boolean
+     * @param v Primer Vértice
+     * @param i Segundo Vértice
+     */
+    
     public boolean ExisteArista(int v, int i){
         boolean a = false;
         if (vertices[i].primero != null && vertices[v].primero != null){
@@ -153,6 +203,12 @@ public class Grafos {
         }
         return a;
     }
+    
+    /**
+     * Método para conocer la Probabilidad de Cruzar por esos Vértices
+     * @param r Primer Vértice
+     * @param s Segundo Vértice
+     */
     
     public void Probabilidades(int r, boolean[] s){
         int count = 0;
@@ -182,12 +238,21 @@ public class Grafos {
     }
     }
     
+    /**
+     * Método para recorrer a Profundidad 
+     * @param v Primer Vértice
+     * @param visitados
+     */
+    
     public void recorrerProfundidad(int v, boolean[] visitados) {
-//se marca el vértice v como visitado
+        
+    // Se marca el vértice v como visitado
         visitados[v] = true;
-//el tratamiento del vértice consiste únicamente en imprimirlo en pantalla
+        
+    // El tratamiento del vértice consiste únicamente en imprimirlo en pantalla
         System.out.println(v);
-//se examinan los vértices adyacentes a v para continuar el recorrido
+        
+    // Se examinan los vértices adyacentes a v para continuar el recorrido
         for (int i = 0; i < this.grafosize; i++) {
             if ((v != i) && (!visitados[i]) && (this.ExisteArista(v, i))) {
                 
@@ -197,8 +262,14 @@ public class Grafos {
                 recorrerProfundidad(i, visitados);
                 
         }
-    }}
-//procedimiento no recursivo
+    }
+    }
+    
+    /**
+     * Método para recorrer a Profundidad 
+     */
+    
+    // Procedimiento no recursivo
 
     public void profundidad() {
         boolean visitados[] = new boolean[this.grafosize];

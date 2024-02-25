@@ -9,6 +9,8 @@ package edd.proyecto;
  * @author pedro
  */
 
+// Clase de la Interfaz
+
 public class InicioInterfaz extends javax.swing.JFrame {
     Grafos newgrafo;
     

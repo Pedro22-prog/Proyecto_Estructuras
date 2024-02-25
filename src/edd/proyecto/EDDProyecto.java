@@ -9,6 +9,8 @@ package edd.proyecto;
  * @author pedro
  */
 
+// Clase EDDProyecto "Main"
+
 public class EDDProyecto {
 
     // Poder visualizar la Interfaz
