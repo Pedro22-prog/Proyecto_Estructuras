@@ -18,6 +18,10 @@ public class InicioInterfaz extends javax.swing.JFrame {
      * Creates new form InicioInterfaz
      */
     
+    /**
+     * Método para presentar la Interfaz 
+     */
+    
     public InicioInterfaz() {
         initComponents();
         this.newgrafo = new Grafos(7);
@@ -92,97 +96,98 @@ public class InicioInterfaz extends javax.swing.JFrame {
                 ExitActionPerformed(evt);
             }
         });
-        jPanel2.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1033, 10, 50, 40));
+        jPanel2.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 30, 50, 40));
 
         jLabel1.setText("Ingre el valor que desea:");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 160, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 160, -1));
 
         InputArista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InputAristaActionPerformed(evt);
             }
         });
-        jPanel2.add(InputArista, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 150, 30));
+        jPanel2.add(InputArista, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 150, 30));
 
+        jLabel2.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         jLabel2.setText("Unimet Ant");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 70, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 150, 50));
 
         jLabel3.setText("Que desea realizar?");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 110, 30));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 110, 30));
 
         jLabel4.setText("Insertar");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 80, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 80, -1));
 
         jLabel5.setText("Insertar Aristas");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, 20));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, 20));
 
         jLabel6.setText("3.-Eliminar Arista");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 100, 10));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 100, 10));
 
         jLabel7.setText("4.-Eliminar Vertice");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 130, -1, -1));
 
         jLabel8.setText("5.-Imprimir");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 70, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, 70, -1));
 
         jLabel9.setText("Ingrese una ciudad: ");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
 
         InsertarCity1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InsertarCity1ActionPerformed(evt);
             }
         });
-        jPanel2.add(InsertarCity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 240, -1));
+        jPanel2.add(InsertarCity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 240, -1));
 
         jLabel10.setText("Ingrese otra ciudad: ");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, -1, -1));
 
         InsertarCity2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InsertarCity2ActionPerformed(evt);
             }
         });
-        jPanel2.add(InsertarCity2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 230, -1));
+        jPanel2.add(InsertarCity2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 230, -1));
 
         jLabel11.setText("Ingrese una ciudad: ");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, -1, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, -1, -1));
 
         jLabel12.setText("Ingrese la distancia: ");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 110, 20));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 120, 20));
 
         Distance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DistanceActionPerformed(evt);
             }
         });
-        jPanel2.add(Distance, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 240, -1));
+        jPanel2.add(Distance, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 240, -1));
 
         DeleteCity2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteCity2ActionPerformed(evt);
             }
         });
-        jPanel2.add(DeleteCity2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 280, -1));
+        jPanel2.add(DeleteCity2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, 280, -1));
 
         jLabel13.setText("Ingrese otra ciudad:");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, -1, -1));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, -1, -1));
 
         jLabel14.setText("Ingrese para eliminar: ");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, -1, -1));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 160, -1, -1));
 
         InputDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InputDeleteActionPerformed(evt);
             }
         });
-        jPanel2.add(InputDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, 220, -1));
+        jPanel2.add(InputDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 160, 220, -1));
 
         ShowGrafo.setColumns(20);
         ShowGrafo.setRows(5);
         jScrollPane1.setViewportView(ShowGrafo);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 340, 200));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, 340, 200));
 
         jButton2.setText("Insertar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -190,7 +195,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, -1, 20));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, 20));
 
         Show.setText("Show");
         Show.addActionListener(new java.awt.event.ActionListener() {
@@ -198,7 +203,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
                 ShowActionPerformed(evt);
             }
         });
-        jPanel2.add(Show, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, 70, 20));
+        jPanel2.add(Show, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 470, 70, 20));
 
         InsertArista.setText("Insertar");
         InsertArista.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +211,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
                 InsertAristaActionPerformed(evt);
             }
         });
-        jPanel2.add(InsertArista, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, 20));
+        jPanel2.add(InsertArista, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, -1, 20));
 
         DeleteArista.setText("Delete");
         DeleteArista.addActionListener(new java.awt.event.ActionListener() {
@@ -214,7 +219,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
                 DeleteAristaActionPerformed(evt);
             }
         });
-        jPanel2.add(DeleteArista, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 70, 20));
+        jPanel2.add(DeleteArista, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, 70, 20));
 
         DeleteVertice.setText("Delete");
         DeleteVertice.addActionListener(new java.awt.event.ActionListener() {
@@ -222,45 +227,83 @@ public class InicioInterfaz extends javax.swing.JFrame {
                 DeleteVerticeActionPerformed(evt);
             }
         });
-        jPanel2.add(DeleteVertice, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 70, 20));
-        jPanel2.add(DeleteCity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 280, -1));
+        jPanel2.add(DeleteVertice, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, 70, 20));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 570));
+        DeleteCity1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteCity1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(DeleteCity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 280, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Método para Cerrar la Interfaz
+     */
+    
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
         this.dispose();
     }//GEN-LAST:event_ExitActionPerformed
 
+    /**
+     * Método para Ingresar una Arista / Camino
+     */
+    
     private void InputAristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputAristaActionPerformed
         
     }//GEN-LAST:event_InputAristaActionPerformed
 
+    /**
+     * Método para Ingresar una Primera Ciudad
+     */
+    
     private void InsertarCity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarCity1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InsertarCity1ActionPerformed
 
+    /**
+     * Método para Ingresar una Segunda Ciudad
+     */
+    
     private void InsertarCity2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarCity2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InsertarCity2ActionPerformed
 
+    /**
+     * Método para Ingresar una Segunda Ciudad
+     */
+    
     private void DeleteCity2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCity2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DeleteCity2ActionPerformed
 
+    /**
+     * Método / Botón  para Insertar
+     */
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String inputArista = this.InputArista.getText();
         newgrafo.Insert(inputArista);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /**
+     * Método para Mostrar
+     */
+    
     private void ShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowActionPerformed
         // TODO add your handling code here:
         this.ShowGrafo.setText(this.newgrafo.Imprimir());
     }//GEN-LAST:event_ShowActionPerformed
 
+    /**
+     * Método para Insertar un Vértice / Una Ciudad
+     */
+    
     private void InsertAristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertAristaActionPerformed
         // TODO add your handling code here:
         String City1 = this.InsertarCity1.getText();
@@ -269,6 +312,10 @@ public class InicioInterfaz extends javax.swing.JFrame {
         newgrafo.InsertArista(d, City1, City2);
     }//GEN-LAST:event_InsertAristaActionPerformed
 
+    /**
+     * Método para Eliminar una Arista / Dos Ciudades
+     */
+    
     private void DeleteAristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAristaActionPerformed
         // TODO add your handling code here:
         String City1 = this.DeleteCity1.getText();
@@ -276,19 +323,39 @@ public class InicioInterfaz extends javax.swing.JFrame {
         newgrafo.DeleteArista(City1, City2);
     }//GEN-LAST:event_DeleteAristaActionPerformed
 
+    /**
+     * Método para Eliminar un Vértice / Una Ciudad
+     */
+    
     private void DeleteVerticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteVerticeActionPerformed
         // TODO add your handling code here:
         String element = this.InputDelete.getText();
         newgrafo.DeleteVertice(element);
     }//GEN-LAST:event_DeleteVerticeActionPerformed
 
+    /**
+     * Método para conocer la Distancia entre las Dos Ciudades
+     */
+    
     private void DistanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DistanceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DistanceActionPerformed
 
+    /**
+     * Método para Eliminar un Vértice
+     */
+    
     private void InputDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputDeleteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InputDeleteActionPerformed
+
+    /**
+     * Método para Ingresar una Primera Ciudad
+     */
+    
+    private void DeleteCity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCity1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DeleteCity1ActionPerformed
 
     /**
      * @param args the command line arguments

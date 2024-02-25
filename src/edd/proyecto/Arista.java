@@ -4,17 +4,16 @@
  */
 package edd.proyecto;
 
-/**
- *
- * @author pedro
- */
-
-
- /** @author VirginiaT
- */
-
 // Clase Arista
  
+/***Descripcion: Clase arista que se encarga de ver las ciudades que la hormagia puede visitar, con las feromonas y las distancias respectivas, y con sus setters y getters respectivos.
+ * @author: Pedro González
+ * @version: 22/02/24
+ * 
+ * @author VirginiaT
+ * @version: 25/02/24
+ * Esto es un comentario para javadoc
+ */
 
 public class Arista {
     
@@ -25,12 +24,14 @@ public class Arista {
      * distance: Distancia que recorre 
      * feromona: Cantidad de feromona de la Arista
      * next: Siguiente Arista
+     * sumatoria: 
      */
     
     private String city;
     private int distance;
     private int feromona;
     private Arista next;
+    public double sumatoria; 
     
     
     /**
@@ -43,6 +44,7 @@ public class Arista {
         this.feromona = 0;
         this.next = null;
         this.city = city;
+        this.sumatoria = 0;
     }
 
     /**
@@ -115,6 +117,10 @@ public class Arista {
     
     public void setNext(Arista next) {
         this.next = next;
+    }
+    
+    public static void WriteTXT(){
+    
     }
     
 }
