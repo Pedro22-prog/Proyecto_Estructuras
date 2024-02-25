@@ -83,4 +83,8 @@ public class Arista {
         this.next = next;
     }
     
+    public static void WriteTXT(){
+        
+    }
+    
 }

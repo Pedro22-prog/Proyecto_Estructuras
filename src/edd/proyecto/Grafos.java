@@ -21,7 +21,7 @@ public class Grafos {
     private int first;
     private int last;
     private int save;
-    private Lista[] vertices;
+    Lista[] vertices;
 
     public Grafos(int grafosize) {
         this.grafosize = grafosize;
@@ -37,8 +37,8 @@ public class Grafos {
 
     public void Insert(String element) {
         Nodo newnodo = new Nodo(element);
-        if (save != grafosize) {
-            for (int i = 0; i < grafosize; i++) {
+        if (save != getGrafosize()) {
+            for (int i = 0; i < getGrafosize(); i++) {
                 if (vertices[i].primero == null) {
                     vertices[i].primero = newnodo;
                     break;
@@ -47,13 +47,11 @@ public class Grafos {
             }
             save+=1;
         } else {
-            Lista[] NewVertices = new Lista[grafosize + 20];
-            for (int i = 0; i < grafosize; i++) {
+            Lista[] NewVertices = new Lista[getGrafosize() + 20];
+            for (int i = 0; i < getGrafosize(); i++) {
                 NewVertices[i] = new Lista();
             }
-            for (int i = 0; i < grafosize; i++) {
-                NewVertices[i] = vertices[i];
-            }
+            System.arraycopy(vertices, 0, NewVertices, 0, getGrafosize());
             NewVertices[vertices.length].primero = newnodo;
             this.grafosize += 20;
             this.vertices = NewVertices;
@@ -61,10 +59,10 @@ public class Grafos {
         }
     }
 
-    public void InsertArista(double element, String City1, String City2) {
+    public void InsertArista(String City1, String City2, double element) {
         Boolean aux = false;
         Boolean abc = false;
-        for (int i = 0; i < grafosize; i++) {
+        for (int i = 0; i < getGrafosize(); i++) {
             if (vertices[i].primero != null && vertices[i].primero.getElement().equals(City1)) {
                 aux = true;
                 if (vertices[i].Search(City2) != null) {
@@ -78,7 +76,7 @@ public class Grafos {
             }
         }
         if (aux && abc) {
-            for (int i = 0; i < grafosize; i++) {
+            for (int i = 0; i < getGrafosize(); i++) {
                 if (vertices[i].primero != null && vertices[i].primero.getElement().equals(City1)) {
                     Arista nuevo = vertices[i].Insert(City2);
                     nuevo.setDistance(element);
@@ -94,7 +92,7 @@ public class Grafos {
 
     public void DeleteArista(String C1, String C2) {
         boolean a = false;
-        for (int i = 0; i < grafosize; i++) {
+        for (int i = 0; i < getGrafosize(); i++) {
             if (vertices[i].primero != null && vertices[i].primero.getElement().equals(C1)) {
                 vertices[i].Delete(C2);
                 a = true;
@@ -110,7 +108,7 @@ public class Grafos {
 
     public void DeleteVertice(String element) {
         boolean b = false;
-        for (int i = 0; i < grafosize; i++) {
+        for (int i = 0; i < getGrafosize(); i++) {
             if (vertices[i].primero != null && vertices[i].primero.getElement().equals(element)) {
                 vertices[i] = new Lista();
                 save--;
@@ -137,7 +135,7 @@ public class Grafos {
 
     public String Imprimir() {
         String p = "";
-        for (int i = 0; i < grafosize; i++) {
+        for (int i = 0; i < getGrafosize(); i++) {
             if (vertices[i].primero != null) {
                 Arista aux = vertices[i].primero.getNext();
 
@@ -170,7 +168,7 @@ public class Grafos {
     }
     
     public void ChangeFirst(String element){
-        for (int i = 0; i < grafosize; i++) {
+        for (int i = 0; i < getGrafosize(); i++) {
             if (vertices[i].primero.getElement().equals(element)){
                 this.first = i;
                 break;
@@ -179,10 +177,12 @@ public class Grafos {
     }
     
     public void ChangeLast(String element){
-        for (int i = 0; i < grafosize; i++) {
-            if (vertices[i].primero.getElement().equals(element)){
-                this.last = i;
-                break;
+        for (int i = 0; i < getGrafosize(); i++) {
+            if (vertices[i].primero != null){
+                if (vertices[i].primero.getElement().equals(element)){
+                    this.last = i;
+                    break;
+            }
             }
         }
     }
@@ -198,21 +198,21 @@ public class Grafos {
     //                count += 1;
     //            }
     //        }
-            for (int i = 0; i < grafosize; i++) {
+            for (int i = 0; i < getGrafosize(); i++) {
                 if (i != r && s[i] != true && vertices[i].primero != null && vertices[r].Search(vertices[i].primero.getElement()) != null){
                    double d = vertices[r].Search(vertices[i].primero.getElement()).getDistance();
 //                    System.out.println(d);
 //                    System.out.println((vertices[r].Search(vertices[i].primero.getElement()).getFeromona()));
-System.out.println("****************************************");
-System.out.println(vertices[r].Search(vertices[i].primero.getElement()).getFeromona());
-                    System.out.println(1/d);
-                    System.out.println("********************************");
+//System.out.println("****************************************");
+//System.out.println(vertices[r].Search(vertices[i].primero.getElement()).getFeromona());
+                    //System.out.println(1/d);
+                    //System.out.println("********************************");
                    p += Math.pow((vertices[r].Search(vertices[i].primero.getElement()).getFeromona()), alpha) * Math.pow(1/d, beta);
             }}
                 System.out.println(p);
             Random l = new Random();
             double random = l.nextDouble();
-            for (int i = 0; i < grafosize; i++) {
+            for (int i = 0; i < getGrafosize(); i++) {
                 if(i != r && s[i] != true && vertices[i].primero != null&& vertices[r].Search(vertices[i].primero.getElement()) != null){
                     double d = vertices[r].Search(vertices[i].primero.getElement()).getDistance();
                     n += (Math.pow((vertices[r].Search(vertices[i].primero.getElement()).getFeromona()), alpha) * Math.pow(1/d, beta))/p;
@@ -247,10 +247,10 @@ System.out.println(vertices[r].Search(vertices[i].primero.getElement()).getFerom
 //procedimiento no recursivo
 
     public void profundidad(double alpha, double beta, Ants a) {
-        boolean visitados[] = new boolean[this.grafosize];
+        boolean visitados[] = new boolean[this.getGrafosize()];
         
 
-        for (int i = 0; i < grafosize; i++) //inicializar vector con campos false
+        for (int i = 0; i < getGrafosize(); i++) //inicializar vector con campos false
         {
             visitados[i] = false;
         }
@@ -260,7 +260,7 @@ System.out.println(vertices[r].Search(vertices[i].primero.getElement()).getFerom
         }
     
     public void NewFeromona(){
-        for (int i = 0; i < grafosize; i++) {
+        for (int i = 0; i < getGrafosize(); i++) {
             if (vertices[i].primero != null){
                 Arista aux = vertices[i].primero.getNext();
                 while (aux != null){
@@ -271,7 +271,7 @@ System.out.println(vertices[r].Search(vertices[i].primero.getElement()).getFerom
         }
     }
     public Arista searchArista(String element1, String element2){
-        for (int i = 0; i < grafosize; i++) {
+        for (int i = 0; i < getGrafosize(); i++) {
             if(vertices[i].primero != null){
 //                System.out.println( vertices[i].primero.getElement() + "    " +element1);
             }
@@ -302,7 +302,7 @@ System.out.println(vertices[r].Search(vertices[i].primero.getElement()).getFerom
     }
     
     public void ActFeromonas(double p){
-        for (int i = 0; i < grafosize; i++) {
+        for (int i = 0; i < getGrafosize(); i++) {
             if (vertices[i].primero != null){
                 Arista aux = vertices[i].primero.getNext();
                 while (aux != null){
@@ -329,6 +329,23 @@ System.out.println(vertices[r].Search(vertices[i].primero.getElement()).getFerom
 //                
 //            }
 //        }
+
+    /**
+     * @return the grafosize
+     */
+    public int getGrafosize() {
+        return grafosize;
+    }
+    /*public static boolean IsNumeric(String element) {
+        boolean resultado;
+        try {
+            Double.parseDouble(element);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+        return resultado;
+    }*/
     }
     
   /*  public void MinPath(){

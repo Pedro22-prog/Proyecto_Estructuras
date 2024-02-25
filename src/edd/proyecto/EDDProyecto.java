@@ -40,7 +40,9 @@ public class EDDProyecto {
 //                
 //            }
 //            newgrafo.ActFeromonas(0.5);
-            InicioInterfaz i = new InicioInterfaz();
+            //InicioInterfaz i = new InicioInterfaz();
+            Grafos newgrafo = new Grafos(25);
+            StartInterface i = new StartInterface(newgrafo);
            i.setVisible(true);
           
             

@@ -9,11 +9,14 @@ package edd.proyecto;
  * @author pedro
  */
 public class DeleteVertice extends javax.swing.JFrame {
-
+    static Grafos newgrafo;
     /**
      * Creates new form DeleteVertice
      */
-    public DeleteVertice() {
+    public DeleteVertice(Grafos graph) {
+        this.newgrafo = graph;
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -30,10 +33,13 @@ public class DeleteVertice extends javax.swing.JFrame {
         Close = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        DeleteVertice = new javax.swing.JTextField();
         Show = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        ShowGrafo = new javax.swing.JTextArea();
+        ReturnMenu = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        DeleteVertie = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -46,33 +52,79 @@ public class DeleteVertice extends javax.swing.JFrame {
                 CloseActionPerformed(evt);
             }
         });
-        jPanel1.add(Close, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, -1, -1));
+        jPanel1.add(Close, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, -1, -1));
 
         jLabel1.setText("Diga que Vertice quiere eliminar");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 180, -1));
 
         jLabel2.setText("Ingrese el vertice: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 100, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 190, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 100, -1));
+        jPanel1.add(DeleteVertice, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 190, -1));
 
         Show.setText("Show");
-        jPanel1.add(Show, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+        Show.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Show, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        ShowGrafo.setColumns(20);
+        ShowGrafo.setRows(5);
+        jScrollPane1.setViewportView(ShowGrafo);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, -1, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 310, 200));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        ReturnMenu.setText("Menu");
+        ReturnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReturnMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ReturnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 470, -1, -1));
+
+        jLabel3.setText("Aqui se muestra la nueva estructura del grafo despues de eliminar el vertice:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+
+        DeleteVertie.setText("Delete");
+        DeleteVertie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteVertieActionPerformed(evt);
+            }
+        });
+        jPanel1.add(DeleteVertie, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
         // TODO add your handling code here:
+        StartInterface start = new StartInterface(newgrafo);
         this.dispose();
     }//GEN-LAST:event_CloseActionPerformed
+
+    private void DeleteVertieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteVertieActionPerformed
+        // TODO add your handling code here:
+        try{
+            String element = this.DeleteVertice.getText();
+            newgrafo.DeleteVertice(element);
+        }catch (Exception err){
+            System.out.println("Ha ocurrido un error: " + err);
+        }
+    }//GEN-LAST:event_DeleteVertieActionPerformed
+
+    private void ReturnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnMenuActionPerformed
+        // TODO add your handling code here:
+        StartInterface interfaz = new StartInterface(newgrafo);
+        this.dispose();
+    }//GEN-LAST:event_ReturnMenuActionPerformed
+
+    private void ShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowActionPerformed
+        // TODO add your handling code here:
+        this.ShowGrafo.setText(this.newgrafo.Imprimir());
+    }//GEN-LAST:event_ShowActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,19 +156,22 @@ public class DeleteVertice extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DeleteVertice().setVisible(true);
+                new DeleteVertice(newgrafo).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Close;
+    private javax.swing.JTextField DeleteVertice;
+    private javax.swing.JButton DeleteVertie;
+    private javax.swing.JButton ReturnMenu;
     private javax.swing.JButton Show;
+    private javax.swing.JTextArea ShowGrafo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

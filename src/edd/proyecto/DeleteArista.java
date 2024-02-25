@@ -9,11 +9,14 @@ package edd.proyecto;
  * @author pedro
  */
 public class DeleteArista extends javax.swing.JFrame {
-
+    static Grafos newgrafo;
     /**
      * Creates new form DeleteArista
      */
-    public DeleteArista() {
+    public DeleteArista(Grafos graph) {
+        this.newgrafo = graph;
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -34,8 +37,10 @@ public class DeleteArista extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         DeleteC2 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        ShowGrafo = new javax.swing.JButton();
+        ShowGrafo = new javax.swing.JTextArea();
+        Show = new javax.swing.JButton();
+        ReturnMenu = new javax.swing.JButton();
+        DeleteArista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -48,29 +53,62 @@ public class DeleteArista extends javax.swing.JFrame {
                 CloseActionPerformed(evt);
             }
         });
-        jPanel1.add(Close, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, -1, -1));
+        jPanel1.add(Close, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, -1, -1));
 
         jLabel1.setText("Eliminar Arista");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 100, 20));
 
         jLabel2.setText("Ingrese una ciudad: ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, 20));
+
+        DeleteC1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteC1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(DeleteC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 190, -1));
 
         jLabel3.setText("Ingrese la otra ciudad: ");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 130, -1));
+
+        DeleteC2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteC2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(DeleteC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 180, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        ShowGrafo.setColumns(20);
+        ShowGrafo.setRows(5);
+        jScrollPane1.setViewportView(ShowGrafo);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 260, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 410, 260));
 
-        ShowGrafo.setText("Show");
-        jPanel1.add(ShowGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+        Show.setText("Show");
+        Show.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Show, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        ReturnMenu.setText("Menu");
+        ReturnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReturnMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ReturnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, -1, -1));
+
+        DeleteArista.setText("Delete");
+        DeleteArista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteAristaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(DeleteArista, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,6 +117,36 @@ public class DeleteArista extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_CloseActionPerformed
+
+    private void DeleteC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteC1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DeleteC1ActionPerformed
+
+    private void DeleteC2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteC2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DeleteC2ActionPerformed
+
+    private void ShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowActionPerformed
+        // TODO add your handling code here:
+        this.ShowGrafo.setText(this.newgrafo.Imprimir());
+    }//GEN-LAST:event_ShowActionPerformed
+
+    private void DeleteAristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAristaActionPerformed
+        // TODO add your handling code here:
+        try{
+            String City1 = this.DeleteC1.getText();
+            String City2 = this.DeleteC2.getText();
+            newgrafo.DeleteArista(City1, City2);
+        } catch (Exception err){
+            System.out.println("Ha ocurrido un error: " + err);
+        }
+    }//GEN-LAST:event_DeleteAristaActionPerformed
+
+    private void ReturnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnMenuActionPerformed
+        // TODO add your handling code here:
+        StartInterface interfaz = new StartInterface(newgrafo);
+        this.dispose();
+    }//GEN-LAST:event_ReturnMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,21 +178,23 @@ public class DeleteArista extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DeleteArista().setVisible(true);
+                new DeleteArista(newgrafo).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Close;
+    private javax.swing.JButton DeleteArista;
     private javax.swing.JTextField DeleteC1;
     private javax.swing.JTextField DeleteC2;
-    private javax.swing.JButton ShowGrafo;
+    private javax.swing.JButton ReturnMenu;
+    private javax.swing.JButton Show;
+    private javax.swing.JTextArea ShowGrafo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

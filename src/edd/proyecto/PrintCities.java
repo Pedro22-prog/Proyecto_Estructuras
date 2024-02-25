@@ -9,14 +9,17 @@ package edd.proyecto;
  * @author pedro
  */
 public class PrintCities extends javax.swing.JFrame {
-    Grafos newgrafo;
+    static Grafos newgrafo;
 
     /**
      * Creates new form PrintCities
      */
-    public PrintCities() {
+    public PrintCities(Grafos graph) {
+        this.newgrafo = new Grafos(25);
+        this.newgrafo = graph;
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
         initComponents();
-        this.newgrafo = new Grafos(7);
     }
 
     /**
@@ -31,8 +34,9 @@ public class PrintCities extends javax.swing.JFrame {
         Close = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         PrintCities = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ShowGrafo = new javax.swing.JTextArea();
+        ReturnMenu = new javax.swing.JButton();
+        Cities = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -45,22 +49,34 @@ public class PrintCities extends javax.swing.JFrame {
         });
         getContentPane().add(Close, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, -1, -1));
 
-        jLabel1.setText("Aqui se imprimen las ciudades que estan en el grafo");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 290, 40));
+        jLabel1.setText("Aqui se agregan las ciudades al grafo");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 200, 40));
 
-        PrintCities.setText("Imprimir");
+        PrintCities.setText("Add");
         PrintCities.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PrintCitiesActionPerformed(evt);
             }
         });
-        getContentPane().add(PrintCities, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        getContentPane().add(PrintCities, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
 
-        ShowGrafo.setColumns(20);
-        ShowGrafo.setRows(5);
-        jScrollPane1.setViewportView(ShowGrafo);
+        ReturnMenu.setText("Menu");
+        ReturnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReturnMenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ReturnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 270, 170));
+        Cities.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CitiesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Cities, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 90, -1));
+
+        jLabel2.setText("Ingrese una o varias ciudades:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -72,8 +88,23 @@ public class PrintCities extends javax.swing.JFrame {
 
     private void PrintCitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintCitiesActionPerformed
         // TODO add your handling code here:
-        this.ShowGrafo.setText(this.newgrafo.Imprimir());
+        try{
+         String inputArista = this.Cities.getText();
+         newgrafo.Insert(inputArista);   
+        } catch(Exception err){
+            System.out.println("Ha ocurrido un error: "+err);
+        }
     }//GEN-LAST:event_PrintCitiesActionPerformed
+
+    private void ReturnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnMenuActionPerformed
+        // TODO add your handling code here:
+         StartInterface interfaz = new StartInterface(newgrafo);
+         this.dispose();
+    }//GEN-LAST:event_ReturnMenuActionPerformed
+
+    private void CitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CitiesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CitiesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,16 +136,17 @@ public class PrintCities extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrintCities().setVisible(true);
+                new PrintCities(newgrafo).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Cities;
     private javax.swing.JButton Close;
     private javax.swing.JButton PrintCities;
-    private javax.swing.JTextArea ShowGrafo;
+    private javax.swing.JButton ReturnMenu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

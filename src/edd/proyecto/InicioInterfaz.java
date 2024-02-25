@@ -4,6 +4,20 @@
  */
 package edd.proyecto;
 
+import java.awt.HeadlessException;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.graphstream.graph.Edge;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.Node;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
+
 /**
  *
  * @author pedro
@@ -109,6 +123,10 @@ public class InicioInterfaz extends javax.swing.JFrame {
         Moves = new javax.swing.JTextField();
         ShowCicles = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
+        PrintGrafo = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        ShowTXT = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,7 +159,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
                 ExitActionPerformed(evt);
             }
         });
-        jPanel2.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, -1, -1));
+        jPanel2.add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 30, -1));
 
         jLabel1.setText("Ingre el valor que desea:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 160, -1));
@@ -272,6 +290,12 @@ public class InicioInterfaz extends javax.swing.JFrame {
             }
         });
         jPanel2.add(DeleteVertice, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 70, 20));
+
+        DeleteCity1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteCity1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(DeleteCity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 280, -1));
 
         jLabel15.setText("Ver Ciclos:");
@@ -373,7 +397,29 @@ public class InicioInterfaz extends javax.swing.JFrame {
         jLabel24.setText("Orden de Pasadas:");
         jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 670, 110, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 780));
+        PrintGrafo.setText("Show");
+        PrintGrafo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrintGrafoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(PrintGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 100, -1, -1));
+
+        jLabel25.setText("Mostrar Grafo: ");
+        jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 100, -1, -1));
+
+        jLabel26.setText("Mostar TXT: ");
+        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 180, -1, -1));
+
+        ShowTXT.setText("Show");
+        ShowTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowTXTActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ShowTXT, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 180, -1, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -414,7 +460,7 @@ public class InicioInterfaz extends javax.swing.JFrame {
         String City1 = this.InsertarCity1.getText();
         String City2 = this.InsertarCity2.getText();
         double d = Double.parseDouble(this.Distance.getText());
-        newgrafo.InsertArista(d, City1, City2);
+        newgrafo.InsertArista(City1, City2, d);
     }//GEN-LAST:event_InsertAristaActionPerformed
 
     private void DeleteAristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAristaActionPerformed
@@ -504,6 +550,86 @@ public class InicioInterfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MovesActionPerformed
 
+    private void PrintGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintGrafoActionPerformed
+        // TODO add your handling code here:
+        Graph graph = new SingleGraph("MyGraph");
+        graph.setAttribute("ui.stylesheet", "node { shape: circle; fill-color: #5DC1B9; text-color: #000000; size: 40px; } "
+                + " edge { size: 2px; shape: line; fill-color: #D3D3D3; }");
+        for (int i = 0; i < newgrafo.getGrafosize(); i++) {
+            if (newgrafo.vertices[i].primero != null) {
+                String username = newgrafo.vertices[i].primero.getElement();
+                Node user = graph.addNode(username);
+                user.setAttribute("ui.label", username);
+            }
+        }
+
+        for (int i = 0; i < newgrafo.getGrafosize(); i++) {
+            if (newgrafo.vertices[i].primero != null) {
+                String source = newgrafo.vertices[i].primero.getElement();
+                Arista currentUser = newgrafo.vertices[i].primero.getNext();
+                while (currentUser != null) {
+                    String target = currentUser.getCity();
+                    try{
+                    Edge edge = graph.addEdge(source + "-" + target, source, target, false);
+                    edge.setAttribute("ui.style", "fill-color: black;");
+                    currentUser = currentUser.getNext();}catch(Exception e){currentUser = currentUser.getNext();}
+                }
+            }
+        }
+        System.setProperty("org.graphstream.ui", "org.graphstream.ui.swing");
+    Viewer viewer = graph.display();
+    }//GEN-LAST:event_PrintGrafoActionPerformed
+
+    private void ShowTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowTXTActionPerformed
+        // TODO add your handling code here:
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de Texto", "txt");
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(filter);
+        File ruta = new File("e:/carpeta/");
+        fileChooser.setCurrentDirectory(ruta);
+        int result = fileChooser.showOpenDialog(null);
+        if(result == JFileChooser.APPROVE_OPTION){
+            File file = fileChooser.getSelectedFile();
+            String linea;
+            int estado = 1;
+            String lineas[]; 
+            try{
+                if (!file.exists()){
+                    file.createNewFile();
+                }else{
+                    FileReader fr = new FileReader(file);
+                    try (BufferedReader br = new BufferedReader(fr)) {
+                        while((linea = br.readLine())!= null){
+                            if(!linea.isEmpty() && !linea.equals("ciudad")){
+                                if(linea.equals("aristas")){
+                                    estado =2;
+                                }else if (estado == 1){
+                                    System.out.println("ciudad" + linea);
+                                    newgrafo.Insert(linea);
+                                    System.out.println("jdlfñsd");
+                                }else if (estado ==2){
+                                    linea = linea.replace(" ", "");
+                                    lineas = linea.split(",");
+                                    System.out.println(lineas.length);
+                                    newgrafo.InsertArista(lineas[0],lineas[1], Double.parseDouble(lineas[2]));
+                                    
+                                }                      
+                            }
+                        }
+                    }
+                    JOptionPane.showMessageDialog(null, "Se ha leido el archivo");
+                }
+            }catch( HeadlessException | IOException | NumberFormatException ex){
+                JOptionPane.showMessageDialog(null, ex);
+            }}
+        
+    }//GEN-LAST:event_ShowTXTActionPerformed
+
+    private void DeleteCity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCity1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DeleteCity1ActionPerformed
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -559,10 +685,12 @@ public class InicioInterfaz extends javax.swing.JFrame {
     private javax.swing.JTextField NewAnts;
     private javax.swing.JTextField NewBeta;
     private javax.swing.JTextField NewRo;
+    private javax.swing.JButton PrintGrafo;
     private javax.swing.JButton Show;
     private javax.swing.JButton ShowCicles;
     private javax.swing.JTextArea ShowGrafo;
     private javax.swing.JTextArea ShowShorter;
+    private javax.swing.JButton ShowTXT;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -582,6 +710,8 @@ public class InicioInterfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
