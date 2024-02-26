@@ -28,8 +28,8 @@ public class Arista {
      */
     
     private String city;
-    private int distance;
-    private int feromona;
+    private double distance;
+    private double feromona;
     private Arista next;
     public double sumatoria; 
     
@@ -70,7 +70,7 @@ public class Arista {
      * @return the distance
      */
     
-    public int getDistance() {
+    public double getDistance() {
         return distance;
     }
 
@@ -79,7 +79,7 @@ public class Arista {
      * @param distance the distance to set
      */
     
-    public void setDistance(int distance) {
+    public void setDistance(double distance) {
         this.distance = distance;
     }
 
@@ -88,7 +88,7 @@ public class Arista {
      * @return the feromona
      */
     
-    public int getFeromona() {
+    public double getFeromona() {
         return feromona;
     }
 
@@ -97,7 +97,7 @@ public class Arista {
      * @param feromona the feromona to set
      */
     
-    public void setFeromona(int feromona) {
+    public void setFeromona(double feromona) {
         this.feromona = feromona;
     }
 
