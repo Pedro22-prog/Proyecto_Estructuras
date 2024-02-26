@@ -92,8 +92,8 @@ public class StartInterface extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 200, 40));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel2.setText("de lo que puede hacer hoy:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, -1, -1));
+        jLabel2.setText("permite realizar éste Proyecto: ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, -1, -1));
 
         jButton2.setText("2.- Conectar Nuevas Aristas");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -158,8 +158,8 @@ public class StartInterface extends javax.swing.JFrame {
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 180, 40));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel3.setText("A continuacion le apareceran las opciones acerca");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
+        jLabel3.setText("A continuación, se le presentan las opciones que");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 560));
 
